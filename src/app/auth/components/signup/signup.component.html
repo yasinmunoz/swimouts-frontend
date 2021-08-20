@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="auth-wrapper">
+    <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <h3 >Register User</h3>
+  
+        <!-- Errors -->
+        <div *ngIf="errors?.name" class="alert alert-danger mt-3">
+          {{ errors?.role_id }}
+        </div>
+        <div *ngIf="errors?.name" class="alert alert-danger mt-3">
+          {{ errors?.name }}
+        </div>
+        <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+          {{ errors?.email }}
+        </div>
+        <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+            {{ errors?.password }}
+        </div>
+        <div *ngIf="errors?.password_confirmation" class="alert alert-danger mt-3">
+            {{ errors?.password_confirmation }}
+        </div>
+  
+        <!-- Signup form -->
+        <div class="col-md-6">
+          <label>Role*</label>
+          <select class="form-select" aria-label="Default select example" formControlName="role_id">
+             <option *ngFor="let item of roles$ | async" [value]="item.id">{{item.role}}</option>
+         </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">First Name*</label>
+          <input type="text" class="form-control" formControlName="name" 
+                 [ngClass]="{'is-valid':name?.valid, 'is-invalid': name?.errors && (name?.touched || name?.dirty)}" required>
+          <div [ngClass]="{'is-valid':name?.valid}" class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label>Surname*</label>
+          <input type="text" class="form-control" formControlName="surname"
+          [ngClass]="{'is-valid':surname?.valid, 'is-invalid': surname?.errors && (surname?.touched || surname?.dirty)}" required>
+          <div [ngClass]="{'is-valid':surname?.valid}" class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <label>Phone</label>
+          <input type="tel" class="form-control" formControlName="phone"
+          [ngClass]="{'is-valid':phone?.valid, 'is-invalid': phone?.errors && (phone?.touched || phone?.dirty)}" required>
+          <div [ngClass]="{'is-valid':phone?.valid}" class="valid-feedback">
+            Looks good!
+          </div>
+          <div [ngClass]="{'is-invalid': phone?.errors && (phone?.touched || phone?.dirty)}" class="invalid-feedback">
+            Please write a valid phone.
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+            <label>Email address*</label>
+            <input type="email" class="form-control" formControlName="email"
+            [ngClass]="{'is-valid':email?.valid, 'is-invalid': email?.errors && (email?.touched || email?.dirty)}" required>
+            <div [ngClass]="{'is-valid':email?.valid}" class="valid-feedback">
+              Looks good!
+            </div>
+            <div [ngClass]="{'is-invalid': email?.errors && (email?.touched || email?.dirty)}" class="invalid-feedback">
+              Please write a email.
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <label>Password*</label>
+            <input type="password" class="form-control" formControlName="password"
+            [ngClass]="{'is-valid':password?.valid, 'is-invalid': password?.errors && (password?.touched || password?.dirty)}" required>
+            <div [ngClass]="{'is-valid':password?.valid}" class="valid-feedback">
+              Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-4">
+          <label>Confirm Password*</label>
+          <input type="password" class="form-control" formControlName="password_confirmation"
+          [ngClass]="{'is-valid':password_confirmation?.valid, 'is-invalid': password_confirmation?.errors && (password_confirmation?.touched || password_confirmation?.dirty)}" required>
+          <div [ngClass]="{'is-valid':password_confirmation?.valid}" class="valid-feedback">
+            Looks good!
+          </div>          
+        </div>
+
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+            <label class="form-check-label" for="invalidCheck3">
+              Agree to terms and conditions
+            </label>
+            <div id="invalidCheck3Feedback" class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-block btn-dark mt-3">Sign up</button>
+        </div>        
+    </form>
+     
+  </div>
+  
+</div>

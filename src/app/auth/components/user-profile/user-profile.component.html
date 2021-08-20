@@ -1,0 +1,21 @@
+<div class="container">
+
+  <div class="card inner-main mt-5">
+
+    <div class="card-header" >
+      <label>User Profile</label> 
+    </div>
+
+    <div class="card-body">
+      <p class="card-text">Name: <strong>{{UserProfile?.name}}</strong></p>
+      <p class="card-text">Email: <strong>{{UserProfile?.email}}</strong></p>      
+
+      <div *ngFor="let item of roles$ | async">        
+        <p class="card-text" *ngIf="item.id == UserProfile?.role_id"> Role:
+        <strong>{{item.role}}</strong>  </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>

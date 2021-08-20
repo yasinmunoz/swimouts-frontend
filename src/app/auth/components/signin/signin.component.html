@@ -1,0 +1,29 @@
+
+<div class="container text-center w-50">
+
+    <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <img class="mb-4" src="../../../../assets/img/swim_icon.png" alt="" width="72" height="72">
+    
+        <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+    
+        <div class="d-flex flex-column mb-3">
+            <input type="email" class="form-control mb-2" placeholder="Email address" formControlName="email">
+            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+        </div>
+            
+        <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+    
+        <button class="btn btn-lg btn-dark btn-block" type="submit">Sign in</button>        
+    
+        <p class="mt-4 text-muted">Don't have an account? <br> <a routerLink="/auth/register">Create an account </a></p>
+        
+
+        <p class="mt-5 mb-3 text-muted">Copyright {{currentYear}} © swimouts. All rights reserved </p>
+    </form>
+    
+</div>
+
